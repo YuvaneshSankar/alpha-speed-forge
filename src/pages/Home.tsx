@@ -1,0 +1,98 @@
+import alphaLogo from '@/assets/alphadesign-logo.png';
+import f1CarBg from '@/assets/f1-car-bg.jpg';
+
+const Home = () => {
+  return (
+    <div className="min-h-screen relative overflow-hidden">
+      {/* F1 Car Background */}
+      <div className="absolute inset-0 w-full h-full">
+        <img 
+          src={f1CarBg} 
+          alt="F1 Car Background" 
+          className="w-full h-full object-cover opacity-10 select-none"
+        />
+        <div className="absolute inset-0 bg-gradient-to-br from-background/80 via-background/60 to-background/80" />
+      </div>
+
+      {/* Hero Content */}
+      <div className="relative z-10 container mx-auto px-4 py-20">
+        <div className="flex flex-col items-center justify-center min-h-[70vh] text-center space-y-8">
+          
+          {/* AlphaDesign Symbol */}
+          <div className="mb-8">
+            <img 
+              src={alphaLogo} 
+              alt="AlphaDesign Symbol" 
+              className="w-24 h-24 md:w-32 md:h-32 mx-auto animate-fade-in hover:scale-110 transition-racing filter drop-shadow-2xl"
+            />
+          </div>
+
+          {/* Project Name */}
+          <h1 className="text-5xl md:text-7xl lg:text-8xl font-rajdhani font-bold hero-text leading-tight">
+            Alpha-Design
+          </h1>
+
+          {/* Project Description */}
+          <p className="text-xl md:text-2xl font-inter max-w-3xl leading-relaxed text-muted-foreground">
+            Revolutionary automotive design project inspired by the precision and performance of 
+            Formula 1 engineering. Pushing the boundaries of aerodynamics, innovation, and 
+            cutting-edge technology.
+          </p>
+
+          {/* Action Buttons */}
+          <div className="flex flex-col sm:flex-row gap-4 mt-12">
+            <button className="btn-racing">
+              Explore Progress
+            </button>
+            <button className="btn-racing-outline">
+              View 3D Model
+            </button>
+          </div>
+
+          {/* Scroll Indicator */}
+          <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <div className="w-6 h-10 border-2 border-primary rounded-full flex justify-center">
+              <div className="w-1 h-3 bg-primary rounded-full mt-2 animate-pulse"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Stats Section */}
+      <div className="relative z-10 bg-gradient-subtle py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center space-y-2">
+              <div className="text-4xl md:text-5xl font-rajdhani font-bold hero-text">
+                150+
+              </div>
+              <div className="text-lg font-inter text-muted-foreground">
+                Hours of Design
+              </div>
+            </div>
+            
+            <div className="text-center space-y-2">
+              <div className="text-4xl md:text-5xl font-rajdhani font-bold hero-text">
+                12
+              </div>
+              <div className="text-lg font-inter text-muted-foreground">
+                Major Milestones
+              </div>
+            </div>
+            
+            <div className="text-center space-y-2">
+              <div className="text-4xl md:text-5xl font-rajdhani font-bold hero-text">
+                99%
+              </div>
+              <div className="text-lg font-inter text-muted-foreground">
+                Completion Rate
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Home;
