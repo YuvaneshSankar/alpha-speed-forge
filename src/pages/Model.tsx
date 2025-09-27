@@ -183,37 +183,37 @@ const Model = () => {
           <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="racing-card p-6 text-center">
               <h3 className="text-xl font-rajdhani font-semibold mb-3 text-primary">
-                Specifications
+                Main Specifications
               </h3>
               <div className="space-y-2 text-muted-foreground">
-                <div>Length: 5.2m</div>
-                <div>Width: 2.0m</div>
-                <div>Height: 1.0m</div>
-                <div>Weight: 740kg</div>
+                <div>Total span : 1600</div>
+                <div>Tip chord : 250</div>
+                <div>Flap count : 3</div>
+                <div>Pylon count : 2</div>
               </div>
             </div>
 
             <div className="racing-card p-6 text-center">
               <h3 className="text-xl font-rajdhani font-semibold mb-3 text-secondary">
-                Materials
+                Endplate specifications
               </h3>
               <div className="space-y-2 text-muted-foreground">
-                <div>Carbon Fiber Body</div>
-                <div>Titanium Components</div>
-                <div>Aluminum Chassis</div>
-                <div>Advanced Composites</div>
+                <div>Endplate height : 280</div>
+                <div>Endplate max_width : 120</div>
+                <div>Endplate thickness_base : 10</div>
+                <div>Endplate forward_lean : 6</div>
               </div>
             </div>
 
             <div className="racing-card p-6 text-center md:col-span-2 lg:col-span-1">
               <h3 className="text-xl font-rajdhani font-semibold mb-3 text-metallic">
-                Performance
+                Target and materials
               </h3>
               <div className="space-y-2 text-muted-foreground">
-                <div>Top Speed: 350+ km/h</div>
-                <div>0-100: 2.6 seconds</div>
-                <div>Downforce: 1,500kg</div>
-                <div>Power: 1,000 HP</div>
+                <div>Material : Standard Carbon Fiber</div>
+                <div>Target Downforce : 4000</div>
+                <div>Target Drag : 40</div>
+                <div>Efficiency Factor : 1.0</div>
               </div>
             </div>
           </div>
