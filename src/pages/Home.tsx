@@ -70,28 +70,28 @@ const Home = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center space-y-2">
               <div className="text-4xl md:text-5xl font-rajdhani font-bold text-foreground">
-                150+
+                9+
               </div>
               <div className="text-lg font-inter text-muted-foreground">
-                Hours of Design
+                Hours of Training
               </div>
             </div>
             
             <div className="text-center space-y-2">
               <div className="text-4xl md:text-5xl font-rajdhani font-bold text-foreground">
-                12
+                4060
               </div>
               <div className="text-lg font-inter text-muted-foreground">
-                Major Milestones
+                RTX - GPU
               </div>
             </div>
             
             <div className="text-center space-y-2">
               <div className="text-4xl md:text-5xl font-rajdhani font-bold text-foreground">
-                99%
+                1950
               </div>
               <div className="text-lg font-inter text-muted-foreground">
-                Completion Rate
+                Achieved downforce (N)
               </div>
             </div>
           </div>
