@@ -1,72 +1,69 @@
 import { Suspense, useRef, useState } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { OrbitControls, Text, Environment } from '@react-three/drei';
+import { Canvas, useFrame, useLoader } from '@react-three/fiber';
+import { OrbitControls, Environment, Text } from '@react-three/drei';
 import { RotateCcw, ZoomIn, ZoomOut, Move3D } from 'lucide-react';
 import * as THREE from 'three';
+import { STLLoader } from 'three/examples/jsm/loaders/STLLoader.js';
 
-// Placeholder 3D model component
-const ModelComponent = () => {
+// Fallback component while loading
+const LoadingComponent = () => (
+  <mesh>
+    <boxGeometry args={[2, 0.5, 1]} />
+    <meshStandardMaterial color="#444444" wireframe />
+  </mesh>
+);
+
+// STL Model component that loads the actual model file
+const STLModelComponent = () => {
   const meshRef = useRef<THREE.Mesh>(null);
   const [hovered, setHovered] = useState(false);
 
-  useFrame((state, delta) => {
-    if (meshRef.current && !hovered) {
-      meshRef.current.rotation.y += delta * 0.5;
-    }
-  });
+  // Load the STL file
+  const geometry = useLoader(STLLoader, '/model.stl');
+
+
+  //Uncomment this for rotation
+  // useFrame((state, delta) => {
+  //   if (meshRef.current && !hovered) {
+  //     meshRef.current.rotation.y += delta * 0.3;
+  //   }
+  // });
+
+  // Center the geometry
+  if (geometry) {
+    geometry.computeBoundingBox();
+    const center = new THREE.Vector3();
+    geometry.boundingBox?.getCenter(center);
+    geometry.translate(-center.x, -center.y, -center.z);
+  }
 
   return (
     <group>
-      {/* Main Car Body */}
       <mesh
         ref={meshRef}
+        geometry={geometry}
         position={[0, 0, 0]}
+        rotation={[-Math.PI / 2, 0, 0]}
         onPointerOver={() => setHovered(true)}
         onPointerOut={() => setHovered(false)}
+        scale={hovered ? 0.021 : 0.02}
       >
-        <boxGeometry args={[3, 0.8, 1.2]} />
         <meshStandardMaterial 
-          color={hovered ? "#dc2626" : "#991b1b"} 
-          metalness={0.8}
-          roughness={0.2}
+          color={hovered ? "#dc2626" : "#666666"} 
+          metalness={0.7}
+          roughness={0.3}
         />
       </mesh>
       
-      {/* Front Wing */}
-      <mesh position={[1.8, -0.2, 0]}>
-        <boxGeometry args={[0.4, 0.1, 1.8]} />
-        <meshStandardMaterial color="#1e40af" metalness={0.9} roughness={0.1} />
-      </mesh>
-      
-      {/* Rear Wing */}
-      <mesh position={[-1.8, 0.6, 0]}>
-        <boxGeometry args={[0.2, 0.4, 1.6]} />
-        <meshStandardMaterial color="#1e40af" metalness={0.9} roughness={0.1} />
-      </mesh>
-      
-      {/* Wheels */}
-      {[
-        [-1.2, -0.4, 0.8],
-        [-1.2, -0.4, -0.8],
-        [1.2, -0.4, 0.8],
-        [1.2, -0.4, -0.8]
-      ].map((position, index) => (
-        <mesh key={index} position={position as [number, number, number]}>
-          <cylinderGeometry args={[0.3, 0.3, 0.2, 16]} />
-          <meshStandardMaterial color="#111111" />
-        </mesh>
-      ))}
-      
       {/* Model Label */}
       <Text
-        position={[0, 2, 0]}
+        position={[0, 3, 0]}
         fontSize={0.5}
-        color="#dc2626"
+        color="#ffffff"
         anchorX="center" 
         anchorY="middle"
-        font="/fonts/rajdhani-bold.woff"
       >
-        Alpha-Design F1 Concept
+        ALPHA DESIGN F1 Model
       </Text>
     </group>
   );
@@ -96,15 +93,15 @@ const Model = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-subtle py-20">
+    <div className="min-h-screen bg-background py-20">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-12">
-          <h1 className="text-4xl md:text-6xl font-rajdhani font-bold hero-text mb-4">
+          <h1 className="text-4xl md:text-6xl font-rajdhani font-bold text-foreground mb-4">
             3D Model Viewer
           </h1>
           <p className="text-xl font-inter text-muted-foreground max-w-2xl mx-auto">
-            Interactive 3D visualization of the Alpha-Design Formula 1 concept. 
+            Interactive 3D visualization of the Alpha-Design Formula 1 concept-(our most updateded one). 
             Drag to rotate, scroll to zoom, and explore every detail.
           </p>
         </div>
@@ -114,10 +111,10 @@ const Model = () => {
           <div className="model-viewer h-[600px] md:h-[700px] relative">
             {/* Canvas */}
             <Canvas
-              camera={{ position: [5, 2, 5], fov: 50 }}
+              camera={{ position: [15, 8, 15], fov: 50 }}
               className="w-full h-full"
             >
-              <Suspense fallback={null}>
+              <Suspense fallback={<LoadingComponent />}>
                 {/* Lighting */}
                 <ambientLight intensity={0.4} />
                 <directionalLight position={[10, 10, 5]} intensity={1} />
@@ -128,7 +125,7 @@ const Model = () => {
                 <Environment preset="studio" />
                 
                 {/* 3D Model */}
-                <ModelComponent />
+                <STLModelComponent />
                 
                 {/* Controls */}
                 <OrbitControls
@@ -137,7 +134,7 @@ const Model = () => {
                   enableZoom={true}
                   enableRotate={true}
                   minDistance={3}
-                  maxDistance={15}
+                  maxDistance={50}
                   maxPolarAngle={Math.PI / 2}
                 />
               </Suspense>
@@ -222,11 +219,11 @@ const Model = () => {
           </div>
 
           {/* Note about STL */}
-          <div className="mt-8 text-center">
+          {/* <div className="mt-8 text-center">
             <p className="text-sm text-muted-foreground font-inter">
               * This is a conceptual 3D model. The actual STL file will be loaded from /public/model.stl when available.
             </p>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

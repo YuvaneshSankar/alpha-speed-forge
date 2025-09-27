@@ -8,6 +8,7 @@ import Home from "./pages/Home";
 import Progress from "./pages/Progress";
 import Aim from "./pages/Aim";
 import Model from "./pages/Model";
+import MilestoneDetail from "./pages/MilestoneDetail";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +24,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/progress" element={<Progress />} />
+            <Route path="/progress/:id" element={<MilestoneDetail />} />
             <Route path="/aim" element={<Aim />} />
             <Route path="/model" element={<Model />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

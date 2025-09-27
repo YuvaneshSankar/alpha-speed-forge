@@ -1,33 +1,36 @@
+import { useNavigate } from 'react-router-dom';
+
 const Progress = () => {
+  const navigate = useNavigate();
   const milestones = [
     {
       id: 1,
-      title: "Initial Design Concepts",
-      description: "Created preliminary sketches and 3D wireframes using advanced CAD software. Established core design principles and aerodynamic objectives.",
+      title: "Reinforcement learning implementation",
+      description: "A hybrid AI system that combines genetic algorithms and reinforcement learning to optimize Formula 1 front wing aerodynamics. The system explores wing geometries through evolutionary algorithms, then refines designs using RL agents trained on CFD simulations, all while maintaining strict FIA regulatory compliance.",
       image: "/milestone-1.jpg",
       status: "completed",
       date: "Week 1-2"
     },
     {
       id: 2,
-      title: "Aerodynamic Testing",
-      description: "Conducted extensive wind tunnel simulations and computational fluid dynamics analysis to optimize airflow and downforce characteristics.",
+      title: "Smoothening and bezier curve implementation",
+      description: "The project introduces Bezier curve parameterization for smooth F1 wing profiles, intelligent CFD scheduling to cut simulation costs, and physics-informed rewards for RL agents. These innovations enable the system to achieve high aerodynamic fitness scores and regulatory compliance.",
       image: "/milestone-2.jpg", 
       status: "completed",
       date: "Week 3-4"
     },
     {
       id: 3,
-      title: "Prototype Manufacturing",
-      description: "Advanced 3D printing and precision manufacturing of key components. Material testing and structural integrity validation.",
+      title: "DDPG-Based RL for Continuous Aerodynamic Optimization",
+      description: "This milestone introduces the use of Deep Deterministic Policy Gradient (DDPG) to enable reinforcement learning in continuous action spaces for aerodynamic optimization, moving beyond traditional RL algorithms that are limited to discrete actions.",
       image: "/milestone-3.jpg",
       status: "in-progress",
       date: "Week 5-6"
     },
     {
       id: 4,
-      title: "Final Assembly & Testing",
-      description: "Complete assembly of all components with professional team oversight. Performance testing and quality assurance protocols.",
+      title: "Modular F1 Car Generation Framework",
+      description: "This milestone extends the automated design process from the front wing to the entire F1 car, enabling modular generation of all car components with high accuracy and quality.",
       image: "/milestone-4.jpg",
       status: "upcoming",
       date: "Week 7-8"
@@ -53,11 +56,11 @@ const Progress = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-subtle py-20">
+    <div className="min-h-screen bg-background py-20">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-16">
-          <h1 className="text-4xl md:text-6xl font-rajdhani font-bold hero-text mb-4">
+          <h1 className="text-4xl md:text-6xl font-rajdhani font-bold text-foreground mb-4">
             Project Progress
           </h1>
           <p className="text-xl font-inter text-muted-foreground max-w-2xl mx-auto">
@@ -71,14 +74,15 @@ const Progress = () => {
           {milestones.map((milestone, index) => (
             <div 
               key={milestone.id}
-              className="timeline-card group"
+              className="timeline-card group cursor-pointer"
               style={{ animationDelay: `${index * 0.1}s` }}
+              onClick={() => navigate(`/progress/${milestone.id}`)}
             >
               {/* Status Badge */}
-              <div className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full text-sm font-medium border mb-4 ${getStatusColor(milestone.status)}`}>
+              {/* <div className={`inline-flex items-center space-x-2 px-3 py-1 rounded-full text-sm font-medium border mb-4 ${getStatusColor(milestone.status)}`}>
                 <span>{getStatusIcon(milestone.status)}</span>
                 <span className="capitalize font-rajdhani">{milestone.status.replace('-', ' ')}</span>
-              </div>
+              </div> */}
 
               {/* Milestone Image */}
               <div className="relative overflow-hidden rounded-lg mb-6 aspect-video">
@@ -96,9 +100,9 @@ const Progress = () => {
                   <h3 className="text-2xl font-rajdhani font-semibold text-foreground">
                     {milestone.title}  
                   </h3>
-                  <span className="text-sm font-inter text-primary font-medium">
+                  {/* <span className="text-sm font-inter text-primary font-medium">
                     {milestone.date}
-                  </span>
+                  </span> */}
                 </div>
                 
                 <p className="text-muted-foreground font-inter leading-relaxed">
@@ -107,7 +111,7 @@ const Progress = () => {
               </div>
 
               {/* Progress Indicator */}
-              <div className="mt-6 pt-4 border-t border-border">
+              {/* <div className="mt-6 pt-4 border-t border-border">
                 <div className="flex items-center justify-between text-sm">
                   <span className="font-rajdhani font-medium text-foreground">
                     Milestone {milestone.id} of 4
@@ -125,30 +129,11 @@ const Progress = () => {
                     ))}
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           ))}
         </div>
 
-        {/* Overall Progress Bar */}
-        <div className="mt-20 max-w-2xl mx-auto">
-          <div className="text-center mb-8">
-            <h3 className="text-2xl font-rajdhani font-semibold mb-2">
-              Overall Project Completion
-            </h3>
-            <p className="text-4xl font-rajdhani font-bold hero-text">
-              75%
-            </p>
-          </div>
-          
-          <div className="relative h-4 bg-muted rounded-full overflow-hidden">
-            <div 
-              className="absolute top-0 left-0 h-full brand-gradient rounded-full transition-all duration-1000 ease-out"
-              style={{ width: '75%' }}
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-pulse" />
-          </div>
-        </div>
       </div>
     </div>
   );

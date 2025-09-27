@@ -19,13 +19,9 @@ const Navigation = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <NavLink to="/" className="flex items-center space-x-2 group">
-            <img 
-              src={alphaLogo} 
-              alt="AlphaDesign" 
-              className="w-10 h-10 transform group-hover:scale-110 transition-racing"
-            />
-            <span className="font-rajdhani font-bold text-xl hero-text">
-              AlphaDesign
+            <img className="w-10 h-10" src="/logo.png" alt="Logo" />
+            <span className="font-rajdhani font-bold text-xl text-foreground">
+              ALPHA DESIGN
             </span>
           </NavLink>
 

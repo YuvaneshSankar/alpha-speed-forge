@@ -1,7 +1,9 @@
 import alphaLogo from '@/assets/alphadesign-logo.png';
 import f1CarBg from '@/assets/f1-car-bg.jpg';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+  const navigate = useNavigate();
   return (
     <div className="min-h-screen relative overflow-hidden">
       {/* F1 Car Background */}
@@ -18,19 +20,17 @@ const Home = () => {
       <div className="relative z-10 container mx-auto px-4 py-20">
         <div className="flex flex-col items-center justify-center min-h-[70vh] text-center space-y-8">
           
-          {/* AlphaDesign Symbol */}
-          <div className="mb-8">
-            <img 
-              src={alphaLogo} 
-              alt="AlphaDesign Symbol" 
-              className="w-24 h-24 md:w-32 md:h-32 mx-auto animate-fade-in hover:scale-110 transition-racing filter drop-shadow-2xl"
-            />
-          </div>
-
           {/* Project Name */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-rajdhani font-bold hero-text leading-tight">
-            Alpha-Design
-          </h1>
+          <div className="flex items-center justify-center space-x-6">
+            {/* <img 
+              src="/logo.png" 
+              alt="Alpha Design Logo" 
+              className="w-16 h-16 md:w-24 md:h-24 lg:w-32 lg:h-32"
+            /> */}
+            <h1 className="text-5xl md:text-7xl lg:text-8xl font-rajdhani font-bold text-foreground leading-tight">
+              ALPHA DESIGN
+            </h1>
+          </div>
 
           {/* Project Description */}
           <p className="text-xl md:text-2xl font-inter max-w-3xl leading-relaxed text-muted-foreground">
@@ -41,10 +41,16 @@ const Home = () => {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row gap-4 mt-12">
-            <button className="btn-racing">
+            <button 
+              className="btn-racing"
+              onClick={() => navigate('/progress')}
+            >
               Explore Progress
             </button>
-            <button className="btn-racing-outline">
+            <button 
+              className="btn-racing-outline"
+              onClick={() => navigate('/model')}
+            >
               View 3D Model
             </button>
           </div>
@@ -59,11 +65,11 @@ const Home = () => {
       </div>
 
       {/* Stats Section */}
-      <div className="relative z-10 bg-gradient-subtle py-20">
+      <div className="relative z-10 bg-background py-20">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="text-center space-y-2">
-              <div className="text-4xl md:text-5xl font-rajdhani font-bold hero-text">
+              <div className="text-4xl md:text-5xl font-rajdhani font-bold text-foreground">
                 150+
               </div>
               <div className="text-lg font-inter text-muted-foreground">
@@ -72,7 +78,7 @@ const Home = () => {
             </div>
             
             <div className="text-center space-y-2">
-              <div className="text-4xl md:text-5xl font-rajdhani font-bold hero-text">
+              <div className="text-4xl md:text-5xl font-rajdhani font-bold text-foreground">
                 12
               </div>
               <div className="text-lg font-inter text-muted-foreground">
@@ -81,7 +87,7 @@ const Home = () => {
             </div>
             
             <div className="text-center space-y-2">
-              <div className="text-4xl md:text-5xl font-rajdhani font-bold hero-text">
+              <div className="text-4xl md:text-5xl font-rajdhani font-bold text-foreground">
                 99%
               </div>
               <div className="text-lg font-inter text-muted-foreground">

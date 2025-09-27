@@ -4,33 +4,33 @@ const Aim = () => {
   const objectives = [
     {
       icon: Target,
-      title: "Precision Engineering",
-      description: "Achieve unparalleled accuracy in design and manufacturing processes, setting new standards for automotive precision."
+      title: "Comprehensive Modular Design",
+      description: "Develop a framework that enables automated generation and integration of all major F1 car components (front wing, rear wing, chassis, suspension, etc.) for cohesive vehicle assembly."
     },
     {
       icon: Rocket,
-      title: "Performance Excellence", 
-      description: "Deliver breakthrough performance metrics that surpass current industry benchmarks in speed and efficiency."
+      title: "Advanced Aerodynamic Optimization", 
+      description: "Apply hybrid AI techniques—genetic algorithms and reinforcement learning—to maximize aerodynamic efficiency (downforce, drag reduction) across all modules while maintaining regulatory compliance."
     },
     {
       icon: Zap,
-      title: "Innovation Leadership",
-      description: "Pioneer cutting-edge technologies that will define the future of automotive design and engineering."
+      title: "Continuous Action Space Control",
+      description: "Implement RL algorithms like DDPG to allow real-valued, nuanced adjustments to design parameters, enabling finer control and more optimal solutions for aerodynamic features."
     },
     {
       icon: Trophy,
-      title: "Championship Quality",
-      description: "Maintain Formula 1 level quality standards throughout every aspect of the development process."
+      title: "Efficient Computational Workflow",
+      description: "Integrate intelligent CFD scheduling and resource management to reduce simulation overhead, accelerating the design cycle and enabling rapid prototyping."
     },
     {
       icon: Cog,
-      title: "Technical Mastery",
-      description: "Master advanced manufacturing techniques and materials science to push engineering boundaries."
+      title: "Physics-Informed Learning and Evaluation",
+      description: "Use physics-based reward structures and Bezier curve parameterization to guide the RL agent toward physically plausible, manufacturable, and high-performance designs."
     },
     {
       icon: Globe,
-      title: "Global Impact",
-      description: "Create solutions that will influence automotive design practices worldwide and inspire future innovations."
+      title: "Regulatory Compliance and Manufacturability",
+      description: "Ensure all generated designs strictly adhere to FIA technical regulations and are feasible for real-world manufacturing, supporting practical application in motorsports."
     }
   ];
 
@@ -38,38 +38,32 @@ const Aim = () => {
     {
       category: "Short Term",
       items: [
-        "Complete aerodynamic optimization by Q1 2024",
-        "Finalize prototype manufacturing process",
-        "Conduct comprehensive testing protocols",
-        "Achieve 95% structural integrity validation"
+        "Training on a heavier GPU's to get the best out of the models",
+        "Close to real implementation of parts like the bezier curves"
       ]
     },
     {
       category: "Medium Term", 
       items: [
-        "Scale manufacturing capabilities",
-        "Integrate advanced materials research",
-        "Establish partnership networks",
-        "Launch pilot production program"
+        "Change the entire empirical status of the project with proper test results to back it up",
+        "Better fine grained stl libraries or get terminal access to a modern 3D softwares like fusion 360 or solidworks"
       ]
     },
     {
       category: "Long Term",
       items: [
-        "Revolutionize automotive design standards",
-        "Expand into global markets",
-        "Develop next-generation technologies",
-        "Establish Alpha-Design as industry leader"
+        "Do this for a complete modular F1 car design",
+        "Train in better gpus maybe tpus for longer time to get the best results"
       ]
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-subtle py-20">
+    <div className="min-h-screen bg-background py-20">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="text-center mb-20">
-          <h1 className="text-4xl md:text-6xl font-rajdhani font-bold hero-text mb-6">
+          <h1 className="text-4xl md:text-6xl font-rajdhani font-bold text-foreground mb-6">
             Project Aims & Vision
           </h1>
           <p className="text-xl font-inter text-muted-foreground max-w-3xl mx-auto leading-relaxed">
@@ -91,8 +85,8 @@ const Aim = () => {
                 className="racing-card p-8 text-center group hover:border-primary/50"
                 style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-gradient-brand flex items-center justify-center group-hover:shadow-glow transition-racing">
-                  <objective.icon className="w-8 h-8 text-white" />
+                <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-muted flex items-center justify-center transition-racing">
+                  <objective.icon className="w-8 h-8 text-foreground" />
                 </div>
                 
                 <h3 className="text-xl font-rajdhani font-semibold mb-4 text-foreground">
@@ -107,12 +101,7 @@ const Aim = () => {
           </div>
         </div>
 
-        {/* Separator */}
-        <div className="flex items-center justify-center mb-20">
-          <div className="h-px w-32 bg-gradient-to-r from-transparent via-primary to-transparent"></div>
-          <div className="mx-6 w-3 h-3 rounded-full bg-primary shadow-glow"></div>
-          <div className="h-px w-32 bg-gradient-to-r from-primary via-secondary to-transparent"></div>
-        </div>
+
 
         {/* Goals Timeline */}
         <div className="max-w-4xl mx-auto">
@@ -128,10 +117,9 @@ const Aim = () => {
                 style={{ animationDelay: `${index * 0.2}s` }}
               >
                 <div className="text-center mb-8">
-                  <h3 className="text-2xl font-rajdhani font-semibold hero-text mb-2">
+                  <h3 className="text-2xl font-rajdhani font-semibold text-foreground mb-2">
                     {goalCategory.category}
                   </h3>
-                  <div className="w-12 h-px bg-gradient-brand mx-auto"></div>
                 </div>
                 
                 <ul className="space-y-4">
@@ -140,7 +128,7 @@ const Aim = () => {
                       key={itemIndex}
                       className="flex items-start space-x-3 group"
                     >
-                      <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0 group-hover:shadow-glow transition-racing"></div>
+                      <div className="w-2 h-2 rounded-full bg-muted-foreground mt-2 flex-shrink-0 transition-racing"></div>
                       <span className="text-muted-foreground font-inter leading-relaxed group-hover:text-foreground transition-racing">
                         {item}
                       </span>
@@ -152,20 +140,7 @@ const Aim = () => {
           </div>
         </div>
 
-        {/* Vision Statement */}
-        <div className="mt-20 text-center">
-          <div className="racing-card p-12 max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-rajdhani font-semibold hero-text mb-6">
-              Our Vision
-            </h2>
-            <p className="text-xl font-inter text-muted-foreground leading-relaxed mb-8">
-              "To become the definitive leader in automotive design innovation, where every creation 
-              embodies the perfect fusion of artistic vision, engineering excellence, and technological 
-              advancement that pushes the boundaries of what's possible."
-            </p>
-            <div className="w-24 h-px bg-gradient-brand mx-auto"></div>
-          </div>
-        </div>
+
       </div>
     </div>
   );
